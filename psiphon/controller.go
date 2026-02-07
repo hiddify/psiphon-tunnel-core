@@ -1489,7 +1489,9 @@ func (controller *Controller) terminateAllTunnels() {
 	controller.nextTunnel = 0
 	NoticeTunnels(len(controller.tunnels))
 }
-
+func (controller *Controller) GetNextActiveTunnel() (tunnel *Tunnel) {
+	return controller.getNextActiveTunnel()
+}
 // getNextActiveTunnel returns the next tunnel from the pool of active
 // tunnels. Currently, tunnel selection order is simple round-robin.
 func (controller *Controller) getNextActiveTunnel() (tunnel *Tunnel) {
