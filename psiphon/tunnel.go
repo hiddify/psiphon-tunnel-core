@@ -604,10 +604,12 @@ func (tunnel *Tunnel) DialTCPChannel(
 
 	return tunnel.wrapWithTransferStats(conn), false, nil
 }
-
 func (tunnel *Tunnel) DialPacketTunnelChannel() (net.Conn, error) {
+	return DialPacketTunnelChannelRemote("")
+}
+func (tunnel *Tunnel) DialPacketTunnelChannelRemote(remote string) (net.Conn, error) {
 
-	channel, err := tunnel.dialChannel(protocol.PACKET_TUNNEL_CHANNEL_TYPE, "")
+	channel, err := tunnel.dialChannel(protocol.PACKET_TUNNEL_CHANNEL_TYPE, remote)
 	if err != nil {
 		return nil, errors.Trace(err)
 	}
