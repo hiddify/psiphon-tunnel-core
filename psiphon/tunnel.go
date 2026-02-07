@@ -605,7 +605,7 @@ func (tunnel *Tunnel) DialTCPChannel(
 	return tunnel.wrapWithTransferStats(conn), false, nil
 }
 func (tunnel *Tunnel) DialPacketTunnelChannel() (net.Conn, error) {
-	return DialPacketTunnelChannelRemote("")
+	return tunnel.DialPacketTunnelChannelRemote("")
 }
 func (tunnel *Tunnel) DialPacketTunnelChannelRemote(remote string) (net.Conn, error) {
 
